@@ -16,13 +16,31 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 app.get('/', function(req, res){
-  res.render('home');
+  res.render('home', {header: "Home", text: homeStartingContent});
 });
 
+app.get('/about', function(req, res){
+  res.render('home', {header: "About", text: aboutContent});
+});
 
+app.get('/contact', function(req, res){
+  res.render('home', {header: "Contact", text: contactContent});
+});
 
+app.get('/compose', function(req, res){
+  res.render('compose', {header: "Compose"});
+});
 
-
+app.post('/compose', function(req, res){
+  let journalEntry = req.body.journalEntry;
+  console.log(journalEntry);
+  var post = {
+    journalTitle: req.body.journalTitle,
+    journalEntry: req.body.journalEntry
+  }
+  console.log(post);
+  res.redirect('/compose');
+});
 
 
 
