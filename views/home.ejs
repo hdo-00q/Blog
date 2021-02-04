@@ -2,4 +2,13 @@
 <h1><%= header %></h1>
 
 <p><%= text %></p>
+
+<% posts.forEach(function(post) { %>
+  <div>
+    <h1><%= post.journalTitle %></h1>
+    <p>
+      <%= post.journalEntry %>
+    </p>
+  </div>
+<% }) %>
 <%- include("partials/footer") -%>
