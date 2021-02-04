@@ -50,7 +50,8 @@ app.post('/compose', function(req, res){
   })
   var condensedPost = {
     journalTitle: req.body.journalTitle,
-    journalEntry: text
+    journalEntry: text,
+    journalLink: '/posts/' + _.snakeCase(_.lowerCase(req.body.journalTitle))
   }
   condensedPosts.push(condensedPost);
   res.redirect('/');
